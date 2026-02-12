@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class LexicalTwistPuzzle {
 
-    static boolean isSingleWord(String w) {
-        return !w.contains(" ");
+    static boolean isReverse(String a, String b) {
+        return new StringBuilder(a).reverse().toString().equalsIgnoreCase(b);
     }
 
     public static void main(String[] args) {
@@ -13,16 +13,14 @@ public class LexicalTwistPuzzle {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter first word: ");
-        String word1 = sc.nextLine();
+        String w1 = sc.nextLine();
 
         System.out.print("Enter second word: ");
-        String word2 = sc.nextLine();
+        String w2 = sc.nextLine();
 
-        if (!isSingleWord(word1) || !isSingleWord(word2)) {
-            System.out.println("Invalid input — only single words allowed");
-            return;
-        }
-
-        System.out.println("Valid inputs accepted");
+        if (isReverse(w1, w2))
+            System.out.println("Words are reverse of each other");
+        else
+            System.out.println("Words are NOT reverse of each other");
     }
 }
