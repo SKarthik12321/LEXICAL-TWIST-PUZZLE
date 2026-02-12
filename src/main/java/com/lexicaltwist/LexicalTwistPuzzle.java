@@ -21,14 +21,19 @@ public class LexicalTwistPuzzle {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-
         String w1 = sc.nextLine();
         String w2 = sc.nextLine();
 
         String combined = (w1 + w2).toUpperCase();
 
-        System.out.println("Combined = " + combined);
-        System.out.println("Vowels = " + vowels(combined));
-        System.out.println("Consonants = " + consonants(combined));
+        int v = vowels(combined);
+        int c = consonants(combined);
+
+        if (v > c)
+            System.out.println("Vowel heavy word pattern");
+        else if (c > v)
+            System.out.println("Consonant heavy word pattern");
+        else
+            System.out.println("Balanced character pattern");
     }
 }
