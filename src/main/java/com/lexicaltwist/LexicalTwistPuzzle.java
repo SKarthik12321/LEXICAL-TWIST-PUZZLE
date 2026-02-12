@@ -8,6 +8,14 @@ public class LexicalTwistPuzzle {
         return new StringBuilder(a).reverse().toString().equalsIgnoreCase(b);
     }
 
+    static String transform(String w) {
+        return new StringBuilder(w)
+                .reverse()
+                .toString()
+                .toLowerCase()
+                .replaceAll("[aeiou]", "@");
+    }
+
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -18,9 +26,10 @@ public class LexicalTwistPuzzle {
         System.out.print("Enter second word: ");
         String w2 = sc.nextLine();
 
-        if (isReverse(w1, w2))
-            System.out.println("Words are reverse of each other");
-        else
-            System.out.println("Words are NOT reverse of each other");
+        if (isReverse(w1, w2)) {
+            System.out.println("Transformed = " + transform(w1));
+        } else {
+            System.out.println("No transformation — not reverse pair");
+        }
     }
 }
