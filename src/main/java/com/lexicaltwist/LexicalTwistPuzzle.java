@@ -4,32 +4,31 @@ import java.util.Scanner;
 
 public class LexicalTwistPuzzle {
 
-    static boolean isReverse(String a, String b) {
-        return new StringBuilder(a).reverse().toString().equalsIgnoreCase(b);
+    static int vowels(String s){
+        int c=0;
+        for(char ch: s.toUpperCase().toCharArray())
+            if("AEIOU".indexOf(ch)>=0) c++;
+        return c;
     }
 
-    static String transform(String w) {
-        return new StringBuilder(w)
-                .reverse()
-                .toString()
-                .toLowerCase()
-                .replaceAll("[aeiou]", "@");
+    static int consonants(String s){
+        int c=0;
+        for(char ch: s.toUpperCase().toCharArray())
+            if(Character.isLetter(ch) && "AEIOU".indexOf(ch)<0) c++;
+        return c;
     }
 
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.print("Enter first word: ");
         String w1 = sc.nextLine();
-
-        System.out.print("Enter second word: ");
         String w2 = sc.nextLine();
 
-        if (isReverse(w1, w2)) {
-            System.out.println("Transformed = " + transform(w1));
-        } else {
-            System.out.println("No transformation — not reverse pair");
-        }
+        String combined = (w1 + w2).toUpperCase();
+
+        System.out.println("Combined = " + combined);
+        System.out.println("Vowels = " + vowels(combined));
+        System.out.println("Consonants = " + consonants(combined));
     }
 }
